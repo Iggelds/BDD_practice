@@ -1,6 +1,6 @@
 Feature: Test scenario for Amazon
 
-  Scenario: Verify filtering by price
+  Scenario: Verify sorting by price
 
     Given User is on "Gaming chairs page"
 

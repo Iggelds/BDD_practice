@@ -48,6 +48,7 @@ public class GamingChairsPage extends BasePage {
         low_price.sendKeys(String.valueOf(low));
         high_price.sendKeys(String.valueOf(high));
         submitForm.submit();
+
     }
 
     public void sortingByLowToHighPrice() {

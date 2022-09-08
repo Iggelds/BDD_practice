@@ -15,7 +15,7 @@ public class GamingChairsPageSteps {
         SearchResultsPage searchResultsPage = new SearchResultsPage(webDriver);
         searchResultsPage.open();
 
-        PAGES_STORAGE.put(pageName, searchResultsPage);
+//        PAGES_STORAGE.put(pageName, searchResultsPage);
     }
 
     @When("User clicks on brand name inside the filter")
@@ -23,7 +23,7 @@ public class GamingChairsPageSteps {
         GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
         gamingChairsPage.filterByBrand();
 
-        PAGES_STORAGE.put("Home Page", gamingChairsPage);
+//        PAGES_STORAGE.put("Home Page", gamingChairsPage);
     }
 
     @When("User selects the range between minimum and maximum price and executes the filter")
@@ -31,6 +31,13 @@ public class GamingChairsPageSteps {
         GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
         gamingChairsPage.filterByPrice(100.00, 150.00);
 
-        PAGES_STORAGE.put("Home Page", gamingChairsPage);
+//        PAGES_STORAGE.put("Home Page", gamingChairsPage);
+    }
+
+    @When("User clicks dropdown menu and selects price from low to high")
+    public void userSelectsSortingPrice() {
+        GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
+        gamingChairsPage.sortingByLowToHighPrice();
+
     }
 }
