@@ -1,7 +1,6 @@
 package org.example.pageobject.pages;
 
 import org.example.pageobject.BasePage;
-import org.example.pageobject.modules.ProfileDropDownModule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -29,18 +28,16 @@ public class GamingChairsPage extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"s-result-sort-select_1\"]")
     private WebElement sort_select;
+    public GamingChairsPage open() {
+        webDriver.get("https://www.amazon.com/s?k=gaming+chairs");
+        return this;
+    }
 
     private WebElement brandInput = brandLi.findElement(By.tagName("input"));
 
 
     public GamingChairsPage(WebDriver webDriver) {
         super(webDriver);
-    }
-
-    public ProfileDropDownModule openProfileDropDown() {
-        profileDropDownButton.click();
-
-        return new ProfileDropDownModule(webDriver);
     }
 
     public void filterByBrand() {

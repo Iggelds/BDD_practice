@@ -4,43 +4,37 @@ import org.example.pageobject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class SearchResultsPage extends BasePage {
-    @FindBy(id = "login_field")
-    private WebElement loginField;
-
-    @FindBy(id = "password")
-    private WebElement passwordField;
-
-    @FindBy(name = "commit")
-    private WebElement sighInButton;
+    private final List<WebElement> searchResults =
+            webDriver.findElements(By.xpath("//*[@data-component-type=\"s-search-result\"]"));
 
     public SearchResultsPage(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public SearchResultsPage open() {
-        webDriver.get("https://www.github.com/login");
-        return this;
+//    public SearchResultsPage open() {
+//        webDriver.get("https://www.github.com/login");
+//        return this;
+//    }
+
+    public List<WebElement> getResults() {
+        return searchResults;
     }
 
-    public GamingChairsPage login(String username, String pass) {
-        loginField.sendKeys(username);
-        passwordField.sendKeys(pass);
-        sighInButton.click();
-
-        return new GamingChairsPage(webDriver);
+    public String getBrand(WebElement element) {
+        return element.findElement(By.tagName("h2")).getText().toLowerCase();
     }
 
-    public void fillIncorrectData(String username, String pass) {
-        loginField.sendKeys(username);
-        passwordField.sendKeys(pass);
+    public Double wholePrice(WebElement element) {
+        WebElement whole = element.findElement(By.className("a-price-whole"));
+        WebElement fraction = element.findElement(By.className("a-price-fraction"));
+        if (whole == null || fraction == null) {
+            return null;
+        }
+        String result = whole.getText() + "." + fraction.getText();
+        return Double.parseDouble(result);
     }
-
-    public String clickSighInButtonAndReceiveErrorMessage() {
-        sighInButton.click();
-        return webDriver.findElement(By.id("js-flash-container")).getText();
-    }
-
 }
