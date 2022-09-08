@@ -1,11 +1,9 @@
-Feature: Test scenario for Git
+Feature: Test scenario for Amazon
 
-  Scenario: Login to GitHub
+  Scenario: Verify filtering by brand name
 
-    Given User is on "Login page"
+    Given User is on "Gaming chairs page"
 
-    When User enters username as "Iggelds" and password on "Login page"
+    When User clicks on brand name inside filter
 
-    Then User is successfully navigated to the "https://github.com/"
-
-    And User info "Iggelds" on "Home Page" is present on navigation panel
+    Then User observes result of gaming chairs by selected brand

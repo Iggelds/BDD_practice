@@ -12,7 +12,7 @@ public class GamingChairsPage extends BasePage {
     private WebElement profileDropDownButton;
 
     @FindBy(xpath = "(//*[@id=\"brandsRefinements\"]//li)[2]")
-    private WebElement brandLi;
+    private static WebElement brandLi;
 
     @FindBy(xpath = "//*[@id=\"low-price\"]")
     private WebElement low_price;
@@ -28,13 +28,8 @@ public class GamingChairsPage extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"s-result-sort-select_1\"]")
     private WebElement sort_select;
-    public GamingChairsPage open() {
-        webDriver.get("https://www.amazon.com/s?k=gaming+chairs");
-        return this;
-    }
 
-    private WebElement brandInput = brandLi.findElement(By.tagName("input"));
-
+    private final WebElement brandInput = brandLi.findElement(By.tagName("input"));
 
     public GamingChairsPage(WebDriver webDriver) {
         super(webDriver);
@@ -44,7 +39,7 @@ public class GamingChairsPage extends BasePage {
         brandInput.sendKeys(Keys.SPACE);
     }
 
-    public String findBrand() {
+    public static String findBrand() {
         String label = brandLi.getAttribute("aria-label");
         return label != null ? label.toLowerCase() : "";
     }

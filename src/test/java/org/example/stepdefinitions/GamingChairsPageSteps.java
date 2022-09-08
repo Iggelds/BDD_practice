@@ -12,17 +12,17 @@ import static org.example.stepdefinitions.BaseSteps.webDriver;
 public class GamingChairsPageSteps {
     @Given("User is on {string}")
     public void userIsOnPage(String pageName) {
-        GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
-        gamingChairsPage.open();
+        SearchResultsPage searchResultsPage = new SearchResultsPage(webDriver);
+        searchResultsPage.open();
 
-        PAGES_STORAGE.put(pageName, gamingChairsPage);
+        PAGES_STORAGE.put(pageName, searchResultsPage);
     }
 
-    @When("User enters username as {string} and password on {string}")
-    public void userEntersUsernameAndPassword (String login, String pageName) {
-//        SearchResultsPage searchResultsPage = (SearchResultsPage) PAGES_STORAGE.get(pageName);
-//        GamingChairsPage gamingChairsPage = searchResultsPage.login(login, "cAro-Kann0");
-//
-//        PAGES_STORAGE.put("Home Page", gamingChairsPage);
+    @When("User clicks on brand name inside filter")
+    public void userChoosesBrand() {
+        GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
+        gamingChairsPage.filterByBrand();
+
+        PAGES_STORAGE.put("Home Page", gamingChairsPage);
     }
 }
