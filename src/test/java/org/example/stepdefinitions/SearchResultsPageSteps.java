@@ -9,16 +9,15 @@ import org.testng.Assert;
 import java.util.List;
 
 import static org.example.stepdefinitions.BaseSteps.PAGES_STORAGE;
-import static org.example.stepdefinitions.BaseSteps.webDriver;
 
 public class SearchResultsPageSteps {
 
     @Then("User observes result of filtered gaming chairs by selected brand")
     public void BrandsElementInTitle() {
-        SearchResultsPage searchResultsPage = (SearchResultsPage) PAGES_STORAGE.get("Search results page");
+        SearchResultsPage searchResultsPage = (SearchResultsPage) PAGES_STORAGE.get(SearchResultsPage.name);
         List<WebElement> searchResults = searchResultsPage.getResults();
 
-        GamingChairsPage gamingChairsPage = (GamingChairsPage) PAGES_STORAGE.get("Gaming chairs page");
+        GamingChairsPage gamingChairsPage = (GamingChairsPage) PAGES_STORAGE.get(GamingChairsPage.name);
         String brandName = gamingChairsPage.findBrand();
 
         for (WebElement element : searchResults) {
@@ -28,7 +27,7 @@ public class SearchResultsPageSteps {
 
     @Then("User observes result of filtered gaming chairs by price range")
     public void PriceVerify() {
-        SearchResultsPage searchResultsPage = new SearchResultsPage(webDriver);
+        SearchResultsPage searchResultsPage = (SearchResultsPage) PAGES_STORAGE.get(SearchResultsPage.name);
         List<WebElement> searchResults = searchResultsPage.getResults();
 
         for (WebElement element : searchResults) {
@@ -43,7 +42,7 @@ public class SearchResultsPageSteps {
 
     @Then("User observes result of sorted gaming chairs")
     public void PriceSorting() {
-        SearchResultsPage searchResultsPage = new SearchResultsPage(webDriver);
+        SearchResultsPage searchResultsPage = (SearchResultsPage) PAGES_STORAGE.get(SearchResultsPage.name);
         List<WebElement> searchResults = searchResultsPage.getResults();
         double price = 0.00;
 

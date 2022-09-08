@@ -8,17 +8,13 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class SearchResultsPage extends BasePage {
+    public static final String name = "Search results page";
     private final List<WebElement> searchResults =
             webDriver.findElements(By.xpath("//*[@data-component-type=\"s-search-result\"]"));
 
     public SearchResultsPage(WebDriver webDriver) {
         super(webDriver);
     }
-
-//    public SearchResultsPage open() {
-//        webDriver.get("https://www.amazon.com/s?k=gaming+chairs");
-//        return this;
-//    }
 
     public List<WebElement> getResults() {
         return searchResults;

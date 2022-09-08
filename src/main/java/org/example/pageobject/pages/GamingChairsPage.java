@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class GamingChairsPage extends BasePage {
+    public static final String name = "Gaming chairs page";
     @FindBy(xpath = "(//*[@id=\"brandsRefinements\"]//li)[2]")
     private WebElement brandLi;
 
@@ -45,14 +46,16 @@ public class GamingChairsPage extends BasePage {
         return label != null ? label.toLowerCase() : "";
     }
 
-    public void filterByPrice(double low, double high) {
+    public SearchResultsPage filterByPrice(double low, double high) {
         low_price.sendKeys(String.valueOf(low));
         high_price.sendKeys(String.valueOf(high));
         submitForm.submit();
+        return new SearchResultsPage(webDriver);
     }
 
-    public void sortingByLowToHighPrice() {
+    public SearchResultsPage sortingByLowToHighPrice() {
         dropDownPrompt.click();
         sort_select.click();
+        return new SearchResultsPage(webDriver);
     }
 }
