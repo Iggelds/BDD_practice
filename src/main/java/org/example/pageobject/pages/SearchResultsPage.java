@@ -15,10 +15,10 @@ public class SearchResultsPage extends BasePage {
         super(webDriver);
     }
 
-    public SearchResultsPage open() {
-        webDriver.get("https://www.amazon.com/s?k=gaming+chairs");
-        return this;
-    }
+//    public SearchResultsPage open() {
+//        webDriver.get("https://www.amazon.com/s?k=gaming+chairs");
+//        return this;
+//    }
 
     public List<WebElement> getResults() {
         return searchResults;

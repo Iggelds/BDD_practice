@@ -8,11 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class GamingChairsPage extends BasePage {
-    @FindBy(xpath = "//summary[@class=\"Header-link\"]/img")
-    private WebElement profileDropDownButton;
-
     @FindBy(xpath = "(//*[@id=\"brandsRefinements\"]//li)[2]")
-    private static WebElement brandLi;
+    private WebElement brandLi;
 
     @FindBy(xpath = "//*[@id=\"low-price\"]")
     private WebElement low_price;
@@ -29,17 +26,21 @@ public class GamingChairsPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"s-result-sort-select_1\"]")
     private WebElement sort_select;
 
-    private final WebElement brandInput = brandLi.findElement(By.tagName("input"));
-
     public GamingChairsPage(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public void filterByBrand() {
-        brandInput.sendKeys(Keys.SPACE);
+    public void open() {
+        webDriver.get("https://www.amazon.com/s?k=gaming+chairs");
     }
 
-    public static String findBrand() {
+    public SearchResultsPage filterByBrand() {
+        WebElement brandInput = brandLi.findElement(By.tagName("input"));
+        brandInput.sendKeys(Keys.SPACE);
+        return new SearchResultsPage(webDriver);
+    }
+
+    public String findBrand() {
         String label = brandLi.getAttribute("aria-label");
         return label != null ? label.toLowerCase() : "";
     }
@@ -48,7 +49,6 @@ public class GamingChairsPage extends BasePage {
         low_price.sendKeys(String.valueOf(low));
         high_price.sendKeys(String.valueOf(high));
         submitForm.submit();
-
     }
 
     public void sortingByLowToHighPrice() {

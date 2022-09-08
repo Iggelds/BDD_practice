@@ -12,18 +12,18 @@ import static org.example.stepdefinitions.BaseSteps.webDriver;
 public class GamingChairsPageSteps {
     @Given("User is on {string}")
     public void userIsOnPage(String pageName) {
-        SearchResultsPage searchResultsPage = new SearchResultsPage(webDriver);
-        searchResultsPage.open();
+        GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
+        gamingChairsPage.open();
 
-//        PAGES_STORAGE.put(pageName, searchResultsPage);
+        PAGES_STORAGE.put(pageName, gamingChairsPage);
     }
 
     @When("User clicks on brand name inside the filter")
     public void userChoosesBrand() {
-        GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
-        gamingChairsPage.filterByBrand();
+        GamingChairsPage gamingChairsPage = (GamingChairsPage) PAGES_STORAGE.get("Gaming chairs page");
+        SearchResultsPage searchResultsPage = gamingChairsPage.filterByBrand();
 
-//        PAGES_STORAGE.put("Home Page", gamingChairsPage);
+        PAGES_STORAGE.put("Search results page", searchResultsPage);
     }
 
     @When("User selects the range between minimum and maximum price and executes the filter")
