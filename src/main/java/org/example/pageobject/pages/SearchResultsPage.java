@@ -5,7 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class SearchResultsPage extends BasePage {
@@ -16,7 +19,10 @@ public class SearchResultsPage extends BasePage {
     }
 
     public List<WebElement> getResults() {
-        return webDriver.findElements(By.xpath("//*[@data-component-type=\"s-search-result\"]"));
+        By xpath = By.xpath("//*[@data-component-type=\"s-search-result\"]");
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpath));
+        return webDriver.findElements(xpath);
     }
 
     public String getBrand(WebElement element) {
@@ -28,7 +34,7 @@ public class SearchResultsPage extends BasePage {
         try {
             whole = element.findElement(By.className("a-price-whole"));
             fraction = element.findElement(By.className("a-price-fraction"));
-        }catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             return null;
         }
         String result = whole.getText() + "." + fraction.getText();
