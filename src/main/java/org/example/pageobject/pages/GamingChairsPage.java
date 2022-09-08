@@ -6,11 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage {
+public class GamingChairsPage extends BasePage {
     @FindBy(xpath = "//summary[@class=\"Header-link\"]/img")
     private WebElement profileDropDownButton;
 
-    public HomePage(WebDriver webDriver) {
+    public GamingChairsPage(WebDriver webDriver) {
         super(webDriver);
     }
 

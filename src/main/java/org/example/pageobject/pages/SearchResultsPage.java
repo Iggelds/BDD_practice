@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage {
+public class SearchResultsPage extends BasePage {
     @FindBy(id = "login_field")
     private WebElement loginField;
 
@@ -16,21 +16,21 @@ public class LoginPage extends BasePage {
     @FindBy(name = "commit")
     private WebElement sighInButton;
 
-    public LoginPage(WebDriver webDriver) {
+    public SearchResultsPage(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public LoginPage open() {
+    public SearchResultsPage open() {
         webDriver.get("https://www.github.com/login");
         return this;
     }
 
-    public HomePage login(String username, String pass) {
+    public GamingChairsPage login(String username, String pass) {
         loginField.sendKeys(username);
         passwordField.sendKeys(pass);
         sighInButton.click();
 
-        return new HomePage(webDriver);
+        return new GamingChairsPage(webDriver);
     }
 
     public void fillIncorrectData(String username, String pass) {
