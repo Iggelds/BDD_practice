@@ -1,11 +1,9 @@
-#Feature: Test scenario for Git
-#
-#  Scenario: Login to GitHub
-#
-#    Given User is on "Login page"
-#
-#    When User enters username as "Iggelds" and password on "Login page"
-#
-#    Then User is successfully navigated to the "https://github.com/"
-#
-#    And User info "Iggelds" on "Home Page" is present on navigation panel
+Feature: Test scenario for Amazon
+
+  Scenario: Verify filtering by price
+
+    Given User is on "Gaming chairs page"
+
+    When User selects the range between minimum and maximum price and executes the filter
+
+    Then User observes result of filtered gaming chairs by price range

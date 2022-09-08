@@ -4,6 +4,6 @@ Feature: Test scenario for Amazon
 
     Given User is on "Gaming chairs page"
 
-    When User clicks on brand name inside filter
+    When User clicks on brand name inside the filter
 
-    Then User observes result of gaming chairs by selected brand
+    Then User observes result of filtered gaming chairs by selected brand

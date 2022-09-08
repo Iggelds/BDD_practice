@@ -18,10 +18,18 @@ public class GamingChairsPageSteps {
         PAGES_STORAGE.put(pageName, searchResultsPage);
     }
 
-    @When("User clicks on brand name inside filter")
+    @When("User clicks on brand name inside the filter")
     public void userChoosesBrand() {
         GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
         gamingChairsPage.filterByBrand();
+
+        PAGES_STORAGE.put("Home Page", gamingChairsPage);
+    }
+
+    @When("User selects the range between minimum and maximum price and executes the filter")
+    public void userSelectsPriceRange() {
+        GamingChairsPage gamingChairsPage = new GamingChairsPage(webDriver);
+        gamingChairsPage.filterByPrice(100.00, 150.00);
 
         PAGES_STORAGE.put("Home Page", gamingChairsPage);
     }
