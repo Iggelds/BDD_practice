@@ -19,10 +19,10 @@ public class SearchResultsPage extends BasePage {
     }
 
     public List<WebElement> getResults() {
-        By xpath = By.xpath("//*[@data-component-type=\"s-search-result\"]");
+        By searchResult = By.xpath("//*[@data-component-type=\"s-search-result\"]");
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpath));
-        return webDriver.findElements(xpath);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(searchResult));
+        return webDriver.findElements(searchResult);
     }
 
     public String getBrand(WebElement element) {

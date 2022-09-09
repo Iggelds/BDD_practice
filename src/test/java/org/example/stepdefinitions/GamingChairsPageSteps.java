@@ -8,7 +8,6 @@ import org.example.pageobject.pages.SearchResultsPage;
 import static org.example.stepdefinitions.BaseSteps.PAGES_STORAGE;
 import static org.example.stepdefinitions.BaseSteps.webDriver;
 
-
 public class GamingChairsPageSteps {
 
     @Given("User is on {string}")
